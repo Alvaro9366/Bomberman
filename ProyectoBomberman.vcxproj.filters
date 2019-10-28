@@ -21,12 +21,18 @@
     <ClCompile Include="Escenario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Controlador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ventana.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Escenario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
