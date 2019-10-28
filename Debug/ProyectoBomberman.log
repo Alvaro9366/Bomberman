@@ -1,4 +1,7 @@
-﻿  Ventana.cpp
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
-  Ventana.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+﻿  Controlador.cpp
+  Escenario.cpp
+  Ventana.cpp
+  Generating Code...
+C:\Users\leona\source\repos\ProyectoBomberman\Escenario.cpp(28,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Controlador.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   ProyectoBomberman.vcxproj -> C:\Users\leona\source\repos\ProyectoBomberman\Debug\ProyectoBomberman.exe
