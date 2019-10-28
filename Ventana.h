@@ -20,9 +20,11 @@ namespace ProyectoBomberman {
 			Bitmap^ bmpFijo = gcnew Bitmap("Imagenes\\bmpFijo.png");
 			Bitmap^ bmpDestruible = gcnew Bitmap("Imagenes\\bmpDestruible.png");
 			Bitmap^ bmpSuelo = gcnew Bitmap("Imagenes\\bmpSuelo.png");
+			Bitmap^ bmpJugador = gcnew Bitmap("Imagenes\\Jugador.png");
 
 			Ventana(void)
 			{
+				bmpJugador->MakeTransparent(bmpJugador->GetPixel(0, 0));
 				InitializeComponent();
 				//
 				//TODO: Add the constructor code here
@@ -70,10 +72,12 @@ namespace ProyectoBomberman {
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-				this->ClientSize = System::Drawing::Size(750, 650);		//Ajuste de tamaño de ventana
+				this->ClientSize = System::Drawing::Size(750, 650);
 				this->Name = L"Ventana";
 				this->Text = L"Ventana";
 				this->Load += gcnew System::EventHandler(this, &Ventana::Ventana_Load);
+				this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Ventana::MantenerTecla);
+				this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Ventana::SoltarTecla);
 				this->ResumeLayout(false);
 
 			}
@@ -87,12 +91,45 @@ namespace ProyectoBomberman {
 			BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
 			BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
 			nuevoControlador->nuevoNivel();
-			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible);
+			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible, bmpJugador);
 			buffer->Render(g);
 
 			delete buffer;
 			delete espacio;
 			delete g;
+		}
+		private: System::Void MantenerTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			
+			switch (e->KeyCode) {
+
+				case Keys::Up:
+					nuevoControlador->getJugador()->setDireccion(Direcciones::Arriba);
+					break;
+
+				case Keys::Down:
+					nuevoControlador->getJugador()->setDireccion(Direcciones::Abajo);
+					break;
+
+				case Keys::Left:
+					nuevoControlador->getJugador()->setDireccion(Direcciones::Izquierda);
+					break;
+
+				case Keys::Right:
+					nuevoControlador->getJugador()->setDireccion(Direcciones::Derecha);
+					break;
+
+				default:
+					break;
+
+			}
+		}
+		private: System::Void SoltarTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+
+			switch (e->KeyCode) {
+			default:
+				nuevoControlador->getJugador()->setDireccion(Direcciones::Ninguna);
+				break;
+			}
 		}
 	};
 }

@@ -1,7 +1,3 @@
-﻿  Controlador.cpp
-  Escenario.cpp
-  Ventana.cpp
-  Generating Code...
-C:\Users\leona\source\repos\ProyectoBomberman\Escenario.cpp(28,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  Jugador.cpp
   Controlador.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   ProyectoBomberman.vcxproj -> C:\Users\leona\source\repos\ProyectoBomberman\Debug\ProyectoBomberman.exe

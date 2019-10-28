@@ -135,11 +135,13 @@
   <ItemGroup>
     <ClCompile Include="Controlador.cpp" />
     <ClCompile Include="Escenario.cpp" />
+    <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="Ventana.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controlador.h" />
     <ClInclude Include="Escenario.h" />
+    <ClInclude Include="Jugador.h" />
     <ClInclude Include="Ventana.h">
       <FileType>CppForm</FileType>
     </ClInclude>
