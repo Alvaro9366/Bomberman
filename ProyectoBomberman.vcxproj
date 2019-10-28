@@ -133,9 +133,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Escenario.cpp" />
     <ClCompile Include="Ventana.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Escenario.h" />
     <ClInclude Include="Ventana.h">
       <FileType>CppForm</FileType>
     </ClInclude>
