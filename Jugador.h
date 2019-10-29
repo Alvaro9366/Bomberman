@@ -26,6 +26,8 @@ private:
 	int alto;
 	Direcciones direccion;
 	Direcciones ultima;
+	Rectangle CDI;
+	Rectangle CAA;
 };
 
 #endif // !JUGADOR_H

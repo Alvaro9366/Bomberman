@@ -28,6 +28,12 @@ Jugador::~Jugador() {
 
 void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador) {
 
+	CDI = Rectangle(x + 2 * 3 + dx, y + 15 * 3, (ancho - 4) * 3, (alto - 15) * 3);
+	CAA = Rectangle(x + 2 * 3, y + 15 * 3 + dy, (ancho - 4) * 3, (alto - 15) * 3);
+
+	g->DrawRectangle(Pens::Red, CDI);
+	g->DrawRectangle(Pens::Orange, CAA);
+
 	Rectangle Selector = Rectangle(indiceX * ancho, indiceY * alto, ancho, alto);
 	Rectangle Aumento = Rectangle(x, y, ancho * 3, alto * 3);
 

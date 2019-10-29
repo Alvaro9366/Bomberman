@@ -1,3 +1,7 @@
-﻿  Jugador.cpp
+﻿  Controlador.cpp
+  Jugador.cpp
+  Ventana.cpp
+  Generating Code...
+C:\Users\leona\source\repos\ProyectoBomberman\Ventana.h(132,1): warning C4065: switch statement contains 'default' but no 'case' labels
   Controlador.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   ProyectoBomberman.vcxproj -> C:\Users\leona\source\repos\ProyectoBomberman\Debug\ProyectoBomberman.exe
