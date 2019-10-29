@@ -40,6 +40,8 @@ void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador) {
 
 void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
 
+	direccion == Arriba ? ancho = 17 : ancho = 18;
+
 	switch (direccion) {
 
 	case Direcciones::Arriba:
