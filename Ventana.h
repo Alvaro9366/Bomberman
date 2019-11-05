@@ -90,7 +90,6 @@ namespace ProyectoBomberman {
 			Graphics^ g = this->CreateGraphics();
 			BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
 			BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
-			nuevoControlador->nuevoNivel();
 			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible, bmpJugador);
 			buffer->Render(g);
 
@@ -98,7 +97,7 @@ namespace ProyectoBomberman {
 			delete espacio;
 			delete g;
 		}
-		private: System::Void MantenerTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		private: System::Void MantenerTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) { //Key Press Events
 			
 			switch (e->KeyCode) {
 
@@ -123,7 +122,7 @@ namespace ProyectoBomberman {
 
 			}
 		}
-		private: System::Void SoltarTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		private: System::Void SoltarTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) { //Key Press Events
 
 			switch (e->KeyCode) {
 			default:

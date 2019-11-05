@@ -1,4 +1,5 @@
 #include "Jugador.h"
+#include "Escenario.h"
 
 Jugador::Jugador(int x, int y) {
 
@@ -17,6 +18,7 @@ Jugador::Jugador(int x, int y) {
 	indiceX = 0;
 	indiceY = 0;
 
+	//Inicialización del jugador
 	direccion = Direcciones::Ninguna;
 	ultima = Direcciones::Abajo;
 
@@ -26,25 +28,46 @@ Jugador::~Jugador() {
 
 }
 
-void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador) {
+void Jugador::ValidarMovimiento(int **matriz) {
+	int X = 0;
+	int Y = 0;
+	for (int i = 0; i < filas; i++) {
+		X = 0;
+		for (int j = 0; j < columnas; j++) {
+			Rectangle C1 = Rectangle(X,Y,50,50);
+			if (matriz[i][j] == 1 || matriz[i][j] == 0) {
+				if (CDI.IntersectsWith(C1))dx = 0;
+				if (CAA.IntersectsWith(C1))dy = 0;
+			}
+			X += 50;
+		}
+		Y += 50;
+	}
+
+}
+
+
+void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador,int **matriz) {
 
 	CDI = Rectangle(x + 2 * 3 + dx, y + 15 * 3, (ancho - 4) * 3, (alto - 15) * 3);
 	CAA = Rectangle(x + 2 * 3, y + 15 * 3 + dy, (ancho - 4) * 3, (alto - 15) * 3);
 
-	g->DrawRectangle(Pens::Red, CDI);
-	g->DrawRectangle(Pens::Orange, CAA);
+	g->DrawRectangle(Pens::Transparent, CDI);
+	g->DrawRectangle(Pens::Transparent, CAA);
+
+	ValidarMovimiento(matriz);
 
 	Rectangle Selector = Rectangle(indiceX * ancho, indiceY * alto, ancho, alto);
 	Rectangle Aumento = Rectangle(x, y, ancho * 3, alto * 3);
 
-	g->DrawImage(bmpJugador, Aumento, Selector, GraphicsUnit::Pixel);
+	g->DrawImage(bmpJugador, Aumento, Selector, GraphicsUnit::Pixel); 
 
 	x += dx;
 	y += dy;
 
 }
 
-void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
+void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador,int **matriz) {
 
 	direccion == Arriba ? ancho = 17 : ancho = 18;
 
@@ -53,15 +76,15 @@ void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
 	case Direcciones::Arriba:
 		indiceY = 0;
 
-		if (indiceX >= 1 && indiceX < 3) {
+		if (indiceX >= 1 && indiceX < 3) { //Intercala entre sprites para caminar hacia arriba
 			indiceX++;
 		}
-		else {
+			else {
 			indiceX = 1;
-		}
+			}
 
-		dx = 0;
-		dy = -10;
+		dx = 0; //X no cambia si camina arriba
+		dy = -10;//Si camina hacia arriba entonces "y" disminuye
 
 		ultima = Arriba;
 
@@ -87,7 +110,7 @@ void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
 	case Direcciones::Izquierda:
 		indiceY = 3;
 
-		if (indiceX >= 1 && indiceX < 3) {
+		if (indiceX >= 1 && indiceX < 3) { //Intercambia el indice en x para caminar a la izquierda
 			indiceX++;
 		}
 		else {
@@ -142,7 +165,7 @@ void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
 		break;
 	}
 
-	dibujarJugador(g, bmpJugador);
+	dibujarJugador(g, bmpJugador,matriz);
 }
 
 void Jugador::setDireccion(Direcciones direccion) {
