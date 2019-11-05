@@ -90,7 +90,7 @@ namespace ProyectoBomberman {
 			Graphics^ g = this->CreateGraphics();
 			BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
 			BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
-			nuevoControlador->nuevoNivel();
+			//nuevoControlador->nuevoNivel();
 			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible, bmpJugador);
 			buffer->Render(g);
 

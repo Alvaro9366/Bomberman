@@ -1,4 +1,5 @@
 #include "Jugador.h"
+#include "Escenario.h"
 
 Jugador::Jugador(int x, int y) {
 
@@ -26,13 +27,15 @@ Jugador::~Jugador() {
 
 }
 
-void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador) {
+void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador, int** matriz) {
 
 	CDI = Rectangle(x + 2 * 3 + dx, y + 15 * 3, (ancho - 4) * 3, (alto - 15) * 3);
 	CAA = Rectangle(x + 2 * 3, y + 15 * 3 + dy, (ancho - 4) * 3, (alto - 15) * 3);
 
-	g->DrawRectangle(Pens::Red, CDI);
-	g->DrawRectangle(Pens::Orange, CAA);
+	g->DrawRectangle(Pens::Transparent, CDI);
+	g->DrawRectangle(Pens::Transparent, CAA);
+
+	validarMovimiento(matriz);
 
 	Rectangle Selector = Rectangle(indiceX * ancho, indiceY * alto, ancho, alto);
 	Rectangle Aumento = Rectangle(x, y, ancho * 3, alto * 3);
@@ -44,7 +47,7 @@ void Jugador::dibujarJugador(Graphics^ g, Bitmap^ bmpJugador) {
 
 }
 
-void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
+void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador, int** matriz) {
 
 	direccion == Arriba ? ancho = 17 : ancho = 18;
 
@@ -142,9 +145,28 @@ void Jugador::moverJugador(Graphics^ g, Bitmap^ bmpJugador) {
 		break;
 	}
 
-	dibujarJugador(g, bmpJugador);
+	dibujarJugador(g, bmpJugador, matriz);
 }
 
 void Jugador::setDireccion(Direcciones direccion) {
 	this->direccion = direccion;
+}
+
+void Jugador::validarMovimiento(int** matriz) {
+	int X{ 0 };
+	int Y{ 0 };
+	for (int i{ 0 }; i < filas; i++) {
+		X = 0;
+		for (int j{ 0 }; j < columnas; j++) {
+			Rectangle bloqueo = Rectangle(X, Y, 50, 50);
+			if (matriz[i][j] == 0 || matriz[i][j] == 1) {
+				if (CDI.IntersectsWith(bloqueo))
+					dx = 0;
+				if (CAA.IntersectsWith(bloqueo))
+					dy = 0;
+			}
+			X += 50;
+		}
+		Y += 50;
+	}
 }

@@ -2,9 +2,6 @@
 #include <ctime>
 #include <cstdlib>
 
-#define filas 13
-#define columnas 15
-
 Escenario::Escenario() {
 
 	matriz = new int* [filas];

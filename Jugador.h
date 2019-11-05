@@ -11,9 +11,10 @@ class Jugador {
 public:
 	Jugador(int, int);
 	~Jugador();
-	void dibujarJugador(Graphics^, Bitmap^);
-	void moverJugador(Graphics^, Bitmap^);
+	void dibujarJugador(Graphics^, Bitmap^, int**);
+	void moverJugador(Graphics^, Bitmap^, int**);
 	void setDireccion(Direcciones);
+	void validarMovimiento(int**);
 
 private:
 	int x;

@@ -19,7 +19,7 @@ void Controlador::dibujar(Graphics^ g, Bitmap^ bmpSuelo, Bitmap^ bmpFijo, Bitmap
 
 	escenarioPrincipal->pintarSuelo(g, bmpSuelo);
 	escenarioPrincipal->pintarBloques(g, bmpFijo, bmpDestruible);
-	jugadorPrincipal->moverJugador(g, bmpJugador);
+	jugadorPrincipal->moverJugador(g, bmpJugador, escenarioPrincipal->getMatriz());
 }
 
 Jugador* Controlador::getJugador() {
