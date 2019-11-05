@@ -1,0 +1,5 @@
+﻿  VectorBombas.cpp
+C:\Users\leona\source\repos\ProyectoBomberman\Source\VectorBombas.cpp(12,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\leona\source\repos\ProyectoBomberman\Source\VectorBombas.cpp(19,21): warning C4018: '<': signed/unsigned mismatch
+  Bomba.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  ProyectoBomberman.vcxproj -> C:\Users\leona\source\repos\ProyectoBomberman\bin\Win32\Debug\ProyectoBomberman.exe

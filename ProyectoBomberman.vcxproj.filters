@@ -15,16 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ventana.cpp">
+    <ClCompile Include="Source\Bomba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Escenario.cpp">
+    <ClCompile Include="Source\Controlador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controlador.cpp">
+    <ClCompile Include="Source\Escenario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Jugador.cpp">
+    <ClCompile Include="Source\Jugador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ventana.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VectorBombas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +38,19 @@
     <ClInclude Include="Ventana.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Escenario.h">
+    <ClInclude Include="Headers\Bomba.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Controlador.h">
+    <ClInclude Include="Headers\Controlador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Jugador.h">
+    <ClInclude Include="Headers\Escenario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Jugador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\VectorBombas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

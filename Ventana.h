@@ -1,5 +1,5 @@
 #pragma once
-#include "Controlador.h"
+#include "./Headers/Controlador.h"
 
 namespace ProyectoBomberman {
 
@@ -15,16 +15,21 @@ namespace ProyectoBomberman {
 	/// </summary>
 	public ref class Ventana : public System::Windows::Forms::Form
 	{
-		public:
+		private:
 			Controlador* nuevoControlador = new Controlador();
 			Bitmap^ bmpFijo = gcnew Bitmap("Imagenes\\bmpFijo.png");
 			Bitmap^ bmpDestruible = gcnew Bitmap("Imagenes\\bmpDestruible.png");
 			Bitmap^ bmpSuelo = gcnew Bitmap("Imagenes\\bmpSuelo.png");
 			Bitmap^ bmpJugador = gcnew Bitmap("Imagenes\\Jugador.png");
+			Bitmap^ bmpBomba = gcnew Bitmap("Imagenes\\bomba.png");
+			Bitmap^ bmpExplosion = gcnew Bitmap("Imagenes\\explosion.png");
 
+		public:
 			Ventana(void)
 			{
 				bmpJugador->MakeTransparent(bmpJugador->GetPixel(0, 0));
+				bmpBomba->MakeTransparent(bmpBomba->GetPixel(0, 0));
+				bmpExplosion->MakeTransparent(bmpExplosion->GetPixel(0, 0));
 				InitializeComponent();
 				//
 				//TODO: Add the constructor code here
@@ -60,6 +65,7 @@ namespace ProyectoBomberman {
 			void InitializeComponent(void)
 			{
 				this->components = (gcnew System::ComponentModel::Container());
+				System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Ventana::typeid));
 				this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 				this->SuspendLayout();
 				// 
@@ -73,8 +79,9 @@ namespace ProyectoBomberman {
 				this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->ClientSize = System::Drawing::Size(750, 650);
+				this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 				this->Name = L"Ventana";
-				this->Text = L"Ventana";
+				this->Text = L"Bomberman!";
 				this->Load += gcnew System::EventHandler(this, &Ventana::Ventana_Load);
 				this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Ventana::MantenerTecla);
 				this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Ventana::SoltarTecla);
@@ -91,7 +98,7 @@ namespace ProyectoBomberman {
 			BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
 			BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
 			//nuevoControlador->nuevoNivel();
-			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible, bmpJugador);
+			nuevoControlador->dibujar(buffer->Graphics, bmpSuelo, bmpFijo, bmpDestruible, bmpJugador, bmpBomba, bmpExplosion);
 			buffer->Render(g);
 
 			delete buffer;
@@ -126,6 +133,8 @@ namespace ProyectoBomberman {
 		private: System::Void SoltarTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 
 			switch (e->KeyCode) {
+			case Keys::Space:
+				nuevoControlador->agregarBomba();
 			default:
 				nuevoControlador->getJugador()->setDireccion(Direcciones::Ninguna);
 				break;
