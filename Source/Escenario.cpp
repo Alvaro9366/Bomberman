@@ -1,15 +1,15 @@
-#include "../Headers/Escenario.h"
+#include "Escenario.h"
 #include <ctime>
 #include <cstdlib>
 
-Escenario::Escenario() {
 
+Escenario::Escenario() {
+	//Constructor y haciendo espacio dinamico para mi matriz
 	matriz = new int* [filas];
 
-	for (int i{ 0 }; i < filas; i++) {
-
-		matriz[i] = new int[columnas];
-	}
+		for (int i{ 0 }; i < filas; i++) {
+			matriz[i] = new int[columnas];
+		}
 }
 
 Escenario::~Escenario() {
@@ -38,7 +38,7 @@ void Escenario::generarMatriz() {		//Función para generar el escenario con bloqu
 				matriz[i][j] = 0;
 			}
 
-			//Bloques transitables iniciales
+			//Bloques transitables de las esquinas
 			else if (((i == 1 && (j == 1 || j == 2)) || (i == 2 && j == 1)) ||
 				(i == filas - 2 && (j == columnas - 2 || j == columnas - 3) ||
 				(i == filas - 3 && j == columnas - 2))) {
@@ -55,15 +55,13 @@ void Escenario::generarMatriz() {		//Función para generar el escenario con bloqu
 }
 
 void Escenario::pintarSuelo(Graphics^ g, Bitmap^ bmpSuelo) {		//Pinta todos los bloques transitables
-	int X{ 0 };
-	int Y{ 0 };
+	int X{0};
+	int Y{0};
 
 	for (int i{ 0 }; i < filas; i++) {
 
 		X = 0;
-
 		for (int j{ 0 }; j < columnas; j++) {
-
 			if (matriz[i][j] == 2) {
 
 				g->DrawImage(bmpSuelo, X, Y, 50, 50);

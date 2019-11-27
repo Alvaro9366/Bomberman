@@ -1,8 +1,9 @@
-#include "../Ventana.h"
+#include "Ventana.h"
 
-using namespace ProyectoBomberman;
-int main() {
+using namespace BombermanDef;
+void main() { //Punto de entrada linker system Windows
 	Application::EnableVisualStyles();
 	Application::Run(gcnew Ventana());
-	return 0;
+
+
 }

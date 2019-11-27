@@ -1,4 +1,4 @@
-#include "../Headers/Bomba.h"
+#include "Bomba.h"
 
 Bomba::Bomba(int x, int y) {
 	this->x = x;
@@ -31,7 +31,7 @@ Estado Bomba::getEstado() {
 bool Bomba::validarLugar(int xJugador, int yJugador, int** matriz) {
 	if (matriz[yJugador / 50][xJugador / 50] == 2) {
 		return true;
-	} 
+	}
 	else {
 		return false;
 	}
@@ -41,7 +41,7 @@ void Bomba::dibujarBomba(Graphics^ g, Bitmap^ bmpBomba, int xJugador, int yJugad
 
 	if (validarLugar(xJugador, yJugador, matriz)) {
 		Rectangle Selector = Rectangle(indiceX * ancho, 0, ancho, alto);
-		Rectangle aumento = Rectangle(x-3, y-10, 45, 45);
+		Rectangle aumento = Rectangle(x - 3, y - 10, 45, 45);
 		g->DrawImage(bmpBomba, aumento, Selector, GraphicsUnit::Pixel);
 	}
 
@@ -71,8 +71,8 @@ void Bomba::dibujarExplosion(Graphics^ g, Bitmap^ bmpExplosion, int** matriz) {
 		Rectangle Izquierda = Rectangle(x - 50, y, 50, 50);
 		g->DrawImage(bmpExplosion, Izquierda, SelectorIzquierda, GraphicsUnit::Pixel);
 
-		if (matriz[y / 50][(x - 50) / 50] == 1) { 
-			matriz[y / 50][(x - 50) / 50] = 2; 
+		if (matriz[y / 50][(x - 50) / 50] == 1) {
+			matriz[y / 50][(x - 50) / 50] = 2;
 		}
 	}
 
@@ -81,8 +81,8 @@ void Bomba::dibujarExplosion(Graphics^ g, Bitmap^ bmpExplosion, int** matriz) {
 		Rectangle Derecha = Rectangle(x + 50, y, 50, 50);
 		g->DrawImage(bmpExplosion, Derecha, SelectorDerecha, GraphicsUnit::Pixel);
 
-		if (matriz[y / 50][(x + 50) / 50] == 1) { 
-			matriz[y / 50][(x + 50) / 50] = 2; 
+		if (matriz[y / 50][(x + 50) / 50] == 1) {
+			matriz[y / 50][(x + 50) / 50] = 2;
 		}
 	}
 
@@ -110,20 +110,20 @@ void Bomba::dibujarExplosion(Graphics^ g, Bitmap^ bmpExplosion, int** matriz) {
 	Rectangle VerticalSuperior = Rectangle(x, y - 50, 50, 50);
 	Rectangle VerticalInferior = Rectangle(x, y + 50, 50, 50);
 
-	if (matriz[(y - 50) / 50][x / 50] != 0) { 
-		g->DrawImage(bmpExplosion, VerticalSuperior, SelectorVerticales, GraphicsUnit::Pixel); 
+	if (matriz[(y - 50) / 50][x / 50] != 0) {
+		g->DrawImage(bmpExplosion, VerticalSuperior, SelectorVerticales, GraphicsUnit::Pixel);
 	}
 
-	if (matriz[(y - 50) / 50][x / 50] == 1) { 
-		matriz[(y - 50) / 50][x / 50] = 2; 
+	if (matriz[(y - 50) / 50][x / 50] == 1) {
+		matriz[(y - 50) / 50][x / 50] = 2;
 	}
 
-	if (matriz[(y + 50) / 50][x / 50] != 0) { 
-		g->DrawImage(bmpExplosion, VerticalInferior, SelectorVerticales, GraphicsUnit::Pixel); 
+	if (matriz[(y + 50) / 50][x / 50] != 0) {
+		g->DrawImage(bmpExplosion, VerticalInferior, SelectorVerticales, GraphicsUnit::Pixel);
 	}
 
-	if (matriz[(y + 50) / 50][x / 50] == 1) { 
-		matriz[(y + 50) / 50][x / 50] = 2; 
+	if (matriz[(y + 50) / 50][x / 50] == 1) {
+		matriz[(y + 50) / 50][x / 50] = 2;
 	}
 
 	if (matriz[(y - 50) / 50][x / 50] != 0) {
@@ -131,8 +131,8 @@ void Bomba::dibujarExplosion(Graphics^ g, Bitmap^ bmpExplosion, int** matriz) {
 		Rectangle PuntaSuperior = Rectangle(x, y - 100, 50, 50);
 		g->DrawImage(bmpExplosion, PuntaSuperior, SelectorPuntaSuperior, GraphicsUnit::Pixel);
 
-		if (matriz[(y - 100) / 50][x / 50] == 1) { 
-			matriz[(y - 100) / 50][x / 50] = 2; 
+		if (matriz[(y - 100) / 50][x / 50] == 1) {
+			matriz[(y - 100) / 50][x / 50] = 2;
 		}
 	}
 
