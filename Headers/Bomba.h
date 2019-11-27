@@ -1,12 +1,11 @@
-#pragma once
 #ifndef BOMBA_H
 #define BOMBA_H
 
 using namespace System::Drawing;
 
 enum Estado {
-	Normal, 
-	Explosion, 
+	Normal,
+	Explosion,
 	Desaparecer
 };
 
@@ -17,6 +16,9 @@ public:
 
 	Estado getEstado();
 
+	int getX() { return x; }
+	int getY() { return y; }
+
 	bool validarLugar(int, int, int**);
 	void dibujarBomba(Graphics^, Bitmap^, int, int, int**);
 
@@ -24,7 +26,7 @@ public:
 	void dibujarExplosion(Graphics^, Bitmap^, int**);
 	void animarExplosion();
 
-	
+
 
 private:		//Datos de la bomba
 	int x;
@@ -47,3 +49,4 @@ private:		//Datos de la explosión
 
 };
 #endif // !BOMBA_H
+

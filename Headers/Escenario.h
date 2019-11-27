@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ESCENARIO_H
 #define ESCENARIO_H
 
-#define filas 13
-#define columnas 15
+#define filas 17
+#define columnas 19
 
 using namespace System::Drawing;
 
